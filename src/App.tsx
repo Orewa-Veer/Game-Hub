@@ -1,15 +1,8 @@
 import { Grid, GridItem } from "@chakra-ui/react";
-import { useEffect } from "react";
 import "./App.css";
-import { useColorMode } from "./components/ui/color-mode";
 import NavBar from "./Component/NavBar";
 
 function App() {
-  const { setColorMode } = useColorMode();
-
-  useEffect(() => {
-    setColorMode("light"); // forces light mode
-  }, []);
   return (
     <>
       <Grid
