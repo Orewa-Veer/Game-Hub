@@ -4,7 +4,7 @@ import { ColorModeButton } from "../components/ui/color-mode";
 const NavBar = () => {
   return (
     <>
-      <HStack justifyContent={"space-between"} padding={"10px"}>
+      <HStack justifyContent={"space-between "} padding={"10px"}>
         <Image src={logo} width={"60px"}></Image>
 
         <ColorModeButton />
