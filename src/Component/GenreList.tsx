@@ -3,21 +3,21 @@ import useGenre from "../hooks/useGenre";
 import getCroppedImage from "../Services/image-url";
 
 const GenreList = () => {
-  const { genre, isLoading, error } = useGenre();
+  const { data, isLoading, error } = useGenre();
   if (isLoading) return <Spinner />;
   if (error) return null;
   return (
     <>
       <List.Root>
-        {genre.map((genre) => (
+        {data.map((data) => (
           <ListItem paddingY={1}>
             <HStack>
               <Image
-                src={getCroppedImage(genre.image_background)}
+                src={getCroppedImage(data.image_background)}
                 rounded={4}
                 height={7}
               />
-              <Text fontSize="lg">{genre.name}</Text>
+              <Text fontSize="lg">{data.name}</Text>
             </HStack>
           </ListItem>
         ))}
