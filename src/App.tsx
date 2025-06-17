@@ -23,7 +23,7 @@ function App() {
 
         <GridItem
           area={"aside"}
-          paddingX={1}
+          paddingX={2}
           display={{ base: "none", lg: "block" }}
         >
           <GenreList />
