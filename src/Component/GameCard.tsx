@@ -8,18 +8,16 @@ interface Prop {
 }
 const GameCard = ({ game }: Prop) => {
   return (
-    <>
-      <Card.Root borderRadius={10} overflow={"hidden"}>
-        <Image src={getCroppedImage(game.background_image)} borderRadius={10} />
-        <CardBody>
-          <Heading font={"2xl"}>{game.name}</Heading>
-          <HStack justifyContent={"space-between"}>
-            <PlatformIconList parent_platforms={game.parent_platforms} />
-            <CardsBadge score={game.metacritic} />
-          </HStack>
-        </CardBody>
-      </Card.Root>
-    </>
+    <Card.Root borderRadius={10} overflow={"hidden"}>
+      <Image src={getCroppedImage(game.background_image)} borderRadius={10} />
+      <CardBody>
+        <Heading font={"2xl"}>{game.name}</Heading>
+        <HStack justifyContent={"space-between"}>
+          <PlatformIconList parent_platforms={game.parent_platforms} />
+          <CardsBadge score={game.metacritic || 0} />
+        </HStack>
+      </CardBody>
+    </Card.Root>
   );
 };
 
