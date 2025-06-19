@@ -1,4 +1,4 @@
-import { Grid, GridItem } from "@chakra-ui/react";
+import { Grid, GridItem, HStack } from "@chakra-ui/react";
 import { useState } from "react";
 import "./App.css";
 import GameGrid from "./Component/GameGrid";
@@ -8,12 +8,15 @@ import NavBar from "./Component/NavBar";
 import Platform from "./Component/Platform";
 import type { Platforms } from "./hooks/useGames";
 import type { Genre } from "./hooks/useGenre";
+import SortSelector from "./Component/SortSelector";
+export interface queryObjects {
+  genre: Genre | null;
+  platforms: Platforms | null;
+  ordering: string;
+}
 
 function App() {
-  const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  const [selectedPlatform, setSelectedPlatform] = useState<Platforms | null>(
-    null
-  );
+  const [query, setQueryParams] = useState<queryObjects>({} as queryObjects);
   return (
     <>
       <Grid
@@ -36,20 +39,29 @@ function App() {
           display={{ base: "none", lg: "block" }}
         >
           <GenreList
-            setSelectedGenre={(genre: Genre) => setSelectedGenre(genre)}
-            selectedGenre={selectedGenre}
+            setSelectedGenre={(genre: Genre) =>
+              setQueryParams({ ...query, genre: genre })
+            }
+            selectedGenre={query.genre}
           />
         </GridItem>
 
         <GridItem area={"main"}>
-          <Platform
-            setSelectedPlatform={(plat: Platforms) => setSelectedPlatform(plat)}
-            seletedPlatform={selectedPlatform}
-          />
-          <GameGrid
-            selectedGenre={selectedGenre}
-            seletedPlatform={selectedPlatform}
-          />
+          <HStack gap={5} marginBottom={5}>
+            <Platform
+              setSelectedPlatform={(plat: Platforms) =>
+                setQueryParams({ ...query, platforms: plat })
+              }
+              seletedPlatform={query.platforms}
+            />
+            <SortSelector
+              sortOrder={query.ordering}
+              setOrdering={(ordering: string) =>
+                setQueryParams({ ...query, ordering })
+              }
+            />
+          </HStack>
+          <GameGrid query={query} />
         </GridItem>
       </Grid>
     </>

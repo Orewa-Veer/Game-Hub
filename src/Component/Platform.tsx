@@ -26,7 +26,6 @@ const Platform = ({ setSelectedPlatform, seletedPlatform }: Props) => {
                 key={data.name}
                 value={data.name}
                 onClick={() => {
-                  console.log("clicked", data.name);
                   setSelectedPlatform(data);
                 }}
               >
