@@ -24,6 +24,7 @@ const useGames = (query: queryObjects) =>
         genres: query.genre?.id,
         parent_platforms: query.platforms?.id,
         ordering: query?.ordering,
+        search: query?.search,
       },
     },
     [query]

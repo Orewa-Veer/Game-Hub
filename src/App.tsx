@@ -13,6 +13,7 @@ export interface queryObjects {
   genre: Genre | null;
   platforms: Platforms | null;
   ordering: string;
+  search: string;
 }
 
 function App() {
@@ -30,7 +31,11 @@ function App() {
         }}
       >
         <GridItem area={"nav"}>
-          <NavBar />
+          <NavBar
+            setSearchQuery={(search: string) =>
+              setQueryParams({ ...query, search })
+            }
+          />
         </GridItem>
 
         <GridItem
