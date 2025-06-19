@@ -21,7 +21,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
     <>
       <List.Root maxWidth={"200px"}>
         {data.map((data) => (
-          <ListItem paddingY={1}>
+          <ListItem paddingY={1} key={data.id}>
             <HStack>
               <Image
                 src={getCroppedImage(data.image_background)}
