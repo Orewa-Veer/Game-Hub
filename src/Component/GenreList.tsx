@@ -1,5 +1,6 @@
 import {
   Button,
+  Heading,
   HStack,
   Image,
   Link,
@@ -19,6 +20,9 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
   if (error) return null;
   return (
     <>
+      <Heading fontSize={"3xl"} marginBottom={3}>
+        Genres
+      </Heading>
       <List.Root maxWidth={"200px"}>
         {data.map((data) => (
           <ListItem paddingY={1} key={data.id}>
@@ -27,6 +31,7 @@ const GenreList = ({ setSelectedGenre, selectedGenre }: Props) => {
                 src={getCroppedImage(data.image_background)}
                 rounded={4}
                 height={7}
+                objectFit={"cover"}
               />
               <Button
                 as={Link}
