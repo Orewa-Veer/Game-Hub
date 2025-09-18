@@ -17,6 +17,6 @@ const Emoji = ({ rating }: Props) => {
       <Image marginTop={1} {...emojiMap[rating]} />
     </>
   );
-};
+}; 
 
 export default Emoji;
